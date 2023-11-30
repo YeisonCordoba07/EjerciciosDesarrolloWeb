@@ -1,87 +1,156 @@
-.container {
-  display: block;
-  background: lightskyblue;
-  border: 3px solid black;
-  border-radius: 10px;
-  display: grid;
-  grid-template-columns: 100px 100px 100px;
-  grid-auto-rows: 100px;
-  gap: 5px;
-  justify-items: stretch;
-  align-items: stretch;
-  width: 700px;
-  height: 800px;
-  justify-content: center;
-  align-content: end;
-  /*place-content: end;*/
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mickey{
+    
+}
+
+.cabeza{
+    background-color: black;
+    height: 250px;
+    width:250px;
+    position: relative;
+    border-radius: 50%;
+    color: red;
+
+}
+
+.cabeza::after{
+    --size: 150px;
+    content: "";
+    position: absolute;
+    height: var(--size);
+    width: var(--size);
+    top:-100px;
+    left: calc(var(--size) / 2 * -1);
+    background-color: black;
+    border-radius: 50%;
+    box-shadow:  250px 0 black;
+}
+
+.cabeza::before{
+    content: "";
+    position: absolute;
+    height: 150px;
+    width: 120px;
+    top:7%;
+    left: -50.5%;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow:  156px 0 white, 228px 0 white, 190px 80px white;
+}
+
+.debug{
+    border: 1px solid red;
+    background-color: rgb(255, 113, 113);
+}
+
+.contenedor-mejillas{
+    position:absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 5px solid black;
+    overflow: hidden;
+
+}
+
+.mejilla{
+    --rotate: 38deg;
+    --position: 18px;
+    height: 150px;
+    width: 70px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+}
+
+.mejilla-izquierda{
+    transform: rotate(calc(var(--rotate) * -1));
+    left: var(--position);
+}
+
+.mejilla-derecha{
+    transform: rotate(var(--rotate));
+    right: var(--position);
+}
+
+.ojos{
+    height: 78px;
+    width: 28px;
+    background-color: black;
+    border-radius: 50%;
+    box-shadow: 40px 0 black;
+    position: absolute;
+    top: 28%;
+    left: 36%;
 }
 
 
-
-
-.container div {
-  background: wheat;
-  border: 2px solid peru;
-  border-radius: 6px;
+.linea-nariz{
+    height: 28px;
+    width: 75px;
+    border-top: 5px solid black;
+    border-radius: 50%;
+    position: absolute;
+    top: -14px;
+    left: -10px;
+}
+.nariz{
+    height: 38px;
+    width: 55px;
+    background-color: black;
+    border-radius: 48%;
+    position: absolute;
+    top: 62.8%;
+    left: 38.8%;
 }
 
-.container div:nth-child(1){
-    background-color: lightgreen;
-    /*grid-column-start: 2;
-    grid-column-end: 4;
-    grid-row-start: 2;
-    grid-row-end: 5;*/
-    grid-column-start: span 2;
-    grid-row-start: span 2;
-    border: 2px solid darkolivegreen;
+.boca{
+    height: 175px;
+    width: 180px;
+    border: 2px solid transparent;
+    border-bottom: 5px solid black;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 3;
+    bottom: 26px;
+    left: 32px;
 }
 
-.container div:nth-child(2){
-    background-color: yellowgreen;
-    /*grid-column-start: 2;
-    grid-column-end: 4;
-    grid-row-start: 2;
-    grid-row-end: 5;*/
-    grid-column-start: span 3;
-    grid-row-start: span 1;
-    border: 2px solid darkgreen;
+.boca-izquierda, .boca-derecha{
+    --distance: -5px;
+    --size: 46px;
+    height: var(--size);
+    width: var(--size);
+    border: 2px solid transparent;
+    border-top: 5px solid black;
+    border-radius: 50%;
+    position: absolute;
+    top: 74%;
 }
 
-.container div:nth-child(3){
-    background-color: orange;
-    /*grid-column-start: 2;
-    grid-column-end: 4;
-    grid-row-start: 2;
-    grid-row-end: 5;*/
-    grid-column: 3/4;
-    grid-row: 1/2;
-    border: 2px solid orangered;
+.boca-izquierda{
+    transform: rotate(-20deg);
+    left: var(--distance);
 }
 
-.container div:nth-child(7){
-    background-color: cadetblue;
-
-    grid-column: 1/4;
-    grid-row: 5/6;
-    border: 2px solid darkcyan;
+.boca-derecha{
+    transform: rotate(20deg);
+    right: var(--distance);
 }
 
-.container div:nth-child(4){
-    justify-self: center;
-    align-self: center;
-}
-.container div:nth-child(5){
-
-    grid-column: 2/4;
-    grid-row: 4/5;
-    border: 2px solid darkcyan;
-}
-
-.container div:nth-child(6){
-    background-color: burlywood;
-    z-index: 10;
-
-    grid-column: 2/4;
-    grid-row: 5/6;
-    border: 2px solid darkcyan;
-}
