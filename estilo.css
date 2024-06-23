@@ -1,78 +1,99 @@
 .container{
     display: flex;
     width: 100%;
-    height: 50vh;
+    height: 90vh;
     background-color: antiquewhite;
     justify-content: center;
     align-items: center;
 }
 
 .circulo {
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
     background-color:crimson;
     border-radius: 50%;
+    position:relative;
+    z-index: 10;
 
-    transition-duration: 1s;
-    transition-property: scale, background-color, box-shadow;
-    /* ease ease-in ease-out ease-in-out */
-    /* steps(5)*/
-    transition-timing-function: ease-in;
-    transition-delay: 1s;
 
-    /*--------FORMA CORTA-------*/
-    transition: 1000ms ease-in-out 0s;
+    /*Para pausar la animacion usando el hover*/
+    &:hover{
+        animation-play-state: paused;
+    }
 }
 
-.circulo:hover{
-    scale: 2;
-    background-color:darkmagenta;
-    box-shadow: 0 0 10px darkmagenta;
-}
-
-
-
-
-
-
-
-/*-------------|Carga|-----------*/
-
-
-
-
-.container2{
-    display: flex;
+.circulo::after{
+    content: "";
+    position: absolute;
     width: 100%;
-    height: 50vh;
-    background-color: lemonchiffon;
-    justify-content: center;
-    align-items: center;
-}
-
-
-.container2:hover .puntos{
-
-    opacity: 0;
-}
-
-.puntos{
-    width: 100px;
-    height: 100px;
-    background-color:cornflowerblue;
+    height: 100%;
+    background-color:crimson;
     border-radius: 50%;
-    transition-duration: 1s;
-    transition-timing-function: ease;
+    top:0;  
+    left: 0;
+    z-index: 5;
+
+
+    animation-name: pulse;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 300ms;
+    /*Numero de veces que se repite*/
+    animation-iteration-count: 2;
+
+    /*reverse, alternative, normal, etc*/
+    animation-direction: alternate-reverse;
+
+    /*para pausar */
+    /*animation-play-state: paused;*/
+
+    /*Para que la animación o el 0bjeto se quede en la posición de la animacion cuando esta acabe*/
+    animation-fill-mode: forwards;
+
+
+
+
+    /* SIMPLIFICADO */
+    /* nombreAnimacion, duracion, function, repeticiones, delay(opcional), fill-mode*/
+    animation: pulse 2s steps(5) infinite 1s both;
+
+    /*dos animacioens juntas
+        animation: pulse 2s steps(3) infinite 1s both, mover 2s ease infinite 1s;
+    */
 }
 
-.puntos:nth-child(1){
-    transition-delay: 0s;
+
+
+
+
+@keyframes pulse{
+    0%{
+        opacity: 0;
+
+    }
+
+    50%{
+        scale:2;
+        opacity: 0.2;
+    }
+
+    100%{
+        opacity: 0.4;
+    }
 }
 
-.puntos:nth-child(2){
-    transition-delay: 300ms;
+@keyframes mover{
+    from{
+        transform: translateY(-150px);
+    }
+    to{
+        transform: translateY(150px);
+    }
 }
 
-.puntos:nth-child(3){
-    transition-delay: 600ms;
-}
+
+
+
+
+
+
