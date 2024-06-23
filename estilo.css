@@ -1,93 +1,47 @@
 .container{
     display: flex;
     width: 100%;
-    height: 90vh;
-    background-color: antiquewhite;
+    height: 200px;
+    background-color: #5a2583;
     justify-content: center;
     align-items: center;
+    border-radius: 15px;
 }
 
 .circulo {
-    width: 50px;
+    width: 150px;
     height: 50px;
-    background-color:crimson;
-    border-radius: 50%;
-    position:relative;
-    z-index: 10;
-
-
-    /*Para pausar la animacion usando el hover*/
-    &:hover{
-        animation-play-state: paused;
-    }
+    background-color:#f3eafd;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    
+    animation: pulse 2s infinite;
 }
 
-.circulo::after{
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color:crimson;
-    border-radius: 50%;
-    top:0;  
-    left: 0;
-    z-index: 5;
-
-
-    animation-name: pulse;
-    animation-duration: 3s;
-    animation-timing-function: ease-in-out;
-    animation-delay: 300ms;
-    /*Numero de veces que se repite*/
-    animation-iteration-count: 2;
-
-    /*reverse, alternative, normal, etc*/
-    animation-direction: alternate-reverse;
-
-    /*para pausar */
-    /*animation-play-state: paused;*/
-
-    /*Para que la animación o el 0bjeto se quede en la posición de la animacion cuando esta acabe*/
-    animation-fill-mode: forwards;
-
-
-
-
-    /* SIMPLIFICADO */
-    /* nombreAnimacion, duracion, function, repeticiones, delay(opcional), fill-mode*/
-    animation: pulse 2s steps(5) infinite 1s both;
-
-    /*dos animacioens juntas
-        animation: pulse 2s steps(3) infinite 1s both, mover 2s ease infinite 1s;
-    */
+.circulo > p{
+    font-family: "Open sans";
+    display: flex;
+    font-weight: 700;
+    color: #5a2583;
+    align-items: center;
 }
-
-
-
-
 
 @keyframes pulse{
-    0%{
-        opacity: 0;
+    0% {
+        /* movX, movY, desenfoque, expansión, color*/
 
+        /* default 0.6 */
+        box-shadow: 0 0 0 0 rgba(161, 74, 195, .8);
     }
-
-    50%{
-        scale:2;
-        opacity: 0.2;
+    
+    70% {
+        /* default 10 */
+        box-shadow: 0 0 0 15px rgba(139, 195, 74, 0);
     }
-
-    100%{
-        opacity: 0.4;
-    }
-}
-
-@keyframes mover{
-    from{
-        transform: translateY(-150px);
-    }
-    to{
-        transform: translateY(150px);
+    100% {
+        box-shadow: 0 0 0 0 rgba(139, 195, 74, 0);
     }
 }
 
